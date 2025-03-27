@@ -168,7 +168,7 @@ const styles = {
 }
 const SpecificPage = () => {
     const params = useParams();
-    const product = flats.filter((each, index) => index == Number(params.id))
+    const product = flats.filter(( index) => index == Number(params.id))
     return (
         <Stack justifyContent={"center"} alignItems={"center"} width={"100%"} >
             <Stack sx={styles.conatiner}>

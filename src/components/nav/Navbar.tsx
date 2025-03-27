@@ -52,9 +52,7 @@ const Navbar = () => {
     const handleHome = () => {
         navigate("/")
     }
-    const handleRegister = () => {
-        navigate("/auth/register")
-    }
+   
     const handleLogin = () => {
         navigate("/auth/login")
     }

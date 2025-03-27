@@ -12,86 +12,7 @@ import { yellow } from "@mui/material/colors";
 import { ChangeEvent, useState } from "react";
 const flatImages = [flat1, flat2, flat3, flat4, flat5, flat6];
 const filter = ["family", "bacheloar", "2bhk", "1bhk", "singleroom/1rk"];
-const flats = [
-    {
-        name: "sri lakshmi venkateswara appartments",
-        landmark: "near Dmart",
-        street: "ayyappa society",
-        dno: "1-24/30",
-        area: "madhapur",
-        city: "hyderabad",
-        pincode: 500081,
-        photos: [],
-        isFav: false,
-        roomType: "1bhk",
-        max: 4,
-        isAvaliable: true,
-        bookingDate: new Date().toLocaleDateString(),
-        description: "1 bhk Appartment in",
-        visitingTime: "",
-        rent: 25000,
-        nonveg: "allowed",
-        veg: "allowed",
-        type: "family/bachelor/co-living",
-        furnitureType: "semi-furniture",
-        deposite: 0,
-        bedrooms: 1,
-        parking: "bike only",
-        pets: "allowed"
-    },
-    {
-        name: "mn mazil",
-        landmark: "near community hall parvath nagar",
-        street: "community hall",
-        dno: "1-2/30",
-        area: "parvath nagar",
-        city: "hyderabad",
-        pincode: 500071,
-        photos: [],
-        isFav: false,
-        roomType: "1bhk",
-        max: 4,
-        isAvaliable: true,
-        bookingDate: new Date().toLocaleDateString(),
-        description: "1 bhk Appartment in",
-        visitingTime: "",
-        rent: 25000,
-        nonveg: "allowed",
-        veg: "allowed",
-        type: "family/bachelor/co-living",
-        furnitureType: "semi-furniture",
-        deposite: 0,
-        bedrooms: 1,
-        parking: "bike only",
-        pets: "not allowed"
-    },
-    {
-        name: "srinu Apparments",
-        landmark: "near BRS office",
-        street: "thanda",
-        dno: "1-254/57",
-        area: "madhapur",
-        city: "hyderabad",
-        pincode: 500083,
-        photos: [],
-        isFav: false,
-        roomType: "1bhk",
-        max: 10,
-        isAvaliable: true,
-        bookingDate: new Date().toLocaleDateString(),
-        description: "1 bhk Appartment in",
-        visitingTime: "",
-        rent: 32000,
-        nonveg: "allowed",
-        veg: "allowed",
-        type: "family/bachelor/co-living",
-        furnitureType: "semi-furniture",
-        deposite: 0,
-        bedrooms: 1,
-        parking: "bike only",
-        pets: "allowed"
-    }
-];
+
 const styles = {
     chipContainer: { display: "flex", gap: '10px', flexWrap: "wrap" },
     chip: { minWidth: "100px", borderRadius: "20px", padding: "5px 10px", border: `1px solid ${colors.gold}`, display: 'flex', justifyContent: "space-between", alignItems: "center", background: "#FFF", color: colors.gold },
@@ -142,7 +63,6 @@ const Home = () => {
     }
     const handleCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
         const { value, checked } = e.target
-        let result;
         switch (value) {
             case "family": setFilters((prev) => ({ ...prev, family: checked }))
                 break;
@@ -163,7 +83,7 @@ const Home = () => {
                 <Stack >
                     <Typography>popular filters :</Typography>
                     {
-                        filter.map((each, index) => <Box>
+                        filter.map((each) => <Box>
                             <Checkbox
                                 {...label}
                                 sx={{
@@ -182,7 +102,7 @@ const Home = () => {
                 <Box sx={styles.chipContainer}>
                     {
                         Object.entries(filters)
-                            .filter(([key, value]) => value === true)
+                            .filter(([ value]) => value === true)
                             .map(([key]) => (
                                 <Box sx={styles.chip} key={key}>
                                     <Box sx={styles.filterName}>
