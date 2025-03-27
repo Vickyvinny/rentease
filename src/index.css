@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+padding:0px;
+margin:0px
+}
+body{
+    margin:0;
+    background:red
+}
+/* .nav-link {
+    color: green;
+    text-decoration: none;
+    font-weight: normal;
+    position: relative;
+    padding-bottom: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-link.active {
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: gold;
+  } */
+  
+  
