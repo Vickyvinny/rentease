@@ -1,4 +1,4 @@
-import { Box, Checkbox, Chip, Stack, Typography } from "@mui/material";
+import { Box, Checkbox, Stack, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { colors } from "../../../uitils/colors";
 import Card from "../../card/Card";

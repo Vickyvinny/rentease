@@ -1,26 +1,52 @@
-import { Box, Paper, Stack, Typography } from "@mui/material"
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import image1 from '../specificpage/images/flat1.jpg';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import image2 from '../specificpage/images/flat12.jpg';
-
 import image3 from '../specificpage/images/flat13.jpg';
-
 import image4 from '../specificpage/images/flat4.jpg';
-
 import image5 from '../specificpage/images/flat5.jpg';
-
 import image6 from '../specificpage/images/flat6.jpg';
-
 import image7 from '../specificpage/images/flat7.jpg';
-
 import image8 from '../specificpage/images/flat8.jpg';
-
 import image9 from '../specificpage/images/flat9.jpg';
 import AltitudeTracker from "../../maps/Googlemaps";
 
+// Type definition for Flat
+interface Flat {
+    name: string;
+    landmark: string;
+    street: string;
+    dno: string;
+    area: string;
+    city: string;
+    pincode: number;
+    photos: string[];
+    isFav: boolean;
+    roomType: string;
+    max: number;
+    isAvaliable: boolean;
+    bookingDate: string;
+    description: string;
+    visitingTime: string;
+    rent: number;
+    nonveg: string;
+    veg: string;
+    type: string;
+    furnitureType: string;
+    deposite: number;
+    bedrooms: number;
+    parking: string;
+    pets: string;
+    fixedDeposite: number;
+    maintaince: number;
+}
+
+// Room images for flats
 const roomIMages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
-const flats = [
+
+// Flats data
+const flats: Flat[] = [
     {
         name: "sri lakshmi venkateswara appartments",
         landmark: "near Dmart",
@@ -106,6 +132,8 @@ const flats = [
         maintaince: 500,
     }
 ];
+
+// Styling for the component
 const styles = {
     mapConatiner: {
         borderRadius: "10px",
@@ -166,15 +194,25 @@ const styles = {
         marginTop: "10px"
     }
 }
+
+// The SpecificPage component
 const SpecificPage = () => {
     const params = useParams();
-    const product = flats.filter(( index) => index == Number(params.id))
+    
+    // Filter the flats by the pincode (id parameter)
+    const product: Flat[] = flats.filter((flat) => flat.pincode === Number(params.id));
+
+    // Handle case where no matching product is found
+    if (product.length === 0) {
+        return <Typography>No matching product found.</Typography>;
+    }
+
     return (
-        <Stack justifyContent={"center"} alignItems={"center"} width={"100%"} >
+        <Stack justifyContent={"center"} alignItems={"center"} width={"100%"}>
             <Stack sx={styles.conatiner}>
-                <Typography sx={styles.title}>Arunai Grand - Sollinganallur</Typography>
+                <Typography sx={styles.title}>{product[0].name}</Typography>
                 <Typography sx={styles.subTitle}>
-                    <FmdGoodIcon sx={{ color: "gold" }} />India 3 A, 3 rd Cross Street, Parameswaran Nagar, Sollinganallur, Chennai 600 009, 600119 Chennai, India–<Box sx={styles.showMap}>Show map</Box>
+                    <FmdGoodIcon sx={{ color: "gold" }} />{product[0].landmark} - {product[0].city} - {product[0].pincode}
                 </Typography>
                 <Stack direction={'row'} gap={'10px'}>
                     <Box component={'a'} href="#pricedetails">price details</Box>
@@ -198,31 +236,22 @@ const SpecificPage = () => {
                             </Box>
                         </Box>
                     </Box>
-                    <Box sx={styles.mapConatiner}>
-                        <AltitudeTracker />
+                    <Box sx={{ width: "30%", height: "100%", display: "flex", flexDirection: "column", gap: "10px" }}>
+                        <Box sx={styles.dynamicBox}>bedrooms: {product[0].bedrooms}</Box>
+                        <Box sx={styles.dynamicBox}>rent: {product[0].rent}</Box>
+                        <Box sx={styles.dynamicBox}>furniture type: {product[0].furnitureType}</Box>
+                        <Box sx={styles.dynamicBox}>deposit: {product[0].deposite}</Box>
+                        <Box sx={styles.dynamicBox}>pets: {product[0].pets}</Box>
+                        <Box sx={styles.dynamicBox}>parking: {product[0].parking}</Box>
+                        <Box sx={styles.dynamicBox}>max occupants: {product[0].max}</Box>
+                        <Box sx={styles.dynamicBox}>
+                            <button style={styles.showMap} onClick={() => { window.scrollTo(0, 0); }}>Show on map</button>
+                        </Box>
                     </Box>
                 </Box>
-                <Paper elevation={4} id="pricedetails" sx={{ width: "100%", marginTop: "20px", padding: "10px", display: "grid", gridTemplateColumns: "4fr 4fr 4fr" }}>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "5px", flexDirection: "column" }}>
-                        <Typography>{product[0].rent} rs/-</Typography>
-                        <Typography>Rent(negosiable)</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "5px", flexDirection: "column" }}>
-                        <Typography>{product[0].deposite} rs/-</Typography>
-                        <Typography>Deposite</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "5px", flexDirection: "column" }}>
-                        <Typography>{product[0].maintaince} rs/-</Typography>
-                        <Typography>maintainance</Typography>
-                    </Box>
-                </Paper>
-                <Paper elevation={4} sx={{padding:"10px",width:"20%",gap:"10px",display:"flex",flexDirection:"column"}} id="contactdetails">
-                    <Box>owner:Ramireddy</Box>
-                    <Box>mobile:6300215266</Box>
-                </Paper>
             </Stack>
-
         </Stack>
-    )
-}
+    );
+};
+
 export default SpecificPage;
