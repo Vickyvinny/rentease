@@ -20,6 +20,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",
+    "rollup": "^4.37.0",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
