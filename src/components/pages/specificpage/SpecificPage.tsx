@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import image1 from '../specificpage/images/flat1.jpg';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
@@ -10,7 +10,6 @@ import image6 from '../specificpage/images/flat6.jpg';
 import image7 from '../specificpage/images/flat7.jpg';
 import image8 from '../specificpage/images/flat8.jpg';
 import image9 from '../specificpage/images/flat9.jpg';
-import AltitudeTracker from "../../maps/Googlemaps";
 
 // Type definition for Flat
 interface Flat {
