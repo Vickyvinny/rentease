@@ -102,7 +102,7 @@ const Home = () => {
                 <Box sx={styles.chipContainer}>
                     {
                         Object.entries(filters)
-                            .filter(([ value]) => value === true)
+                            .filter(([ value]:any) => value === true)
                             .map(([key]) => (
                                 <Box sx={styles.chip} key={key}>
                                     <Box sx={styles.filterName}>
